@@ -81,7 +81,10 @@
                     <i class="fa-solid fa-graduation-cap text-3xl"></i>
                 </div>
                 <h1 class="text-2xl sm:text-3xl font-bold tracking-tight text-white">SIM SPENTES</h1>
-                <p class="text-xs sm:text-sm text-slate-400 mt-1 uppercase tracking-wider font-medium">Sistem Informasi & Manajemen UPT SMP Negeri 1 Wates</p>
+                <p class="text-xs sm:text-sm text-slate-400 mt-2 uppercase tracking-wider font-medium leading-relaxed">
+                    Sistem Informasi & Manajemen<br>
+                    UPT SMP Negeri 1 Wates, Kabupaten Blitar
+                </p>
             </div>
 
             <!-- Login Card -->
@@ -98,7 +101,7 @@
                             <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-400">
                                 <i class="fa-solid fa-user"></i>
                             </span>
-                            <input type="text" id="username" required placeholder="" 
+                            <input type="text" id="username" required placeholder="Contoh: guru1 / kepsek / admin" 
                                 class="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:bg-white transition-all">
                         </div>
                     </div>
@@ -127,6 +130,29 @@
                         </button>
                     </div>
                 </form>
+
+                <!-- Quick Demo Login Buttons -->
+                <div class="mt-6 pt-6 border-t border-slate-200">
+                    <p class="text-xs font-semibold text-slate-500 mb-3 text-center uppercase tracking-wider">Demo Akses Cepat Peran:</p>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                        <button type="button" onclick="fillDemo('guru1', '123')" class="px-2 py-2.5 bg-slate-100 hover:bg-indigo-50 hover:text-indigo-600 text-slate-700 text-xs font-medium rounded-lg border border-slate-200 transition-all flex flex-col items-center gap-1">
+                            <i class="fa-solid fa-chalkboard-user text-indigo-600"></i>
+                            <span>Guru (guru1)</span>
+                        </button>
+                        <button type="button" onclick="fillDemo('kepsek', '123')" class="px-2 py-2.5 bg-slate-100 hover:bg-indigo-50 hover:text-indigo-600 text-slate-700 text-xs font-medium rounded-lg border border-slate-200 transition-all flex flex-col items-center gap-1">
+                            <i class="fa-solid fa-user-tie text-indigo-600"></i>
+                            <span>Kepsek (kepsek)</span>
+                        </button>
+                        <button type="button" onclick="fillDemo('admin', '123')" class="px-2 py-2.5 bg-slate-100 hover:bg-indigo-50 hover:text-indigo-600 text-slate-700 text-xs font-medium rounded-lg border border-slate-200 transition-all flex flex-col items-center gap-1">
+                            <i class="fa-solid fa-shield-halved text-indigo-600"></i>
+                            <span>Admin (admin)</span>
+                        </button>
+                        <button type="button" onclick="fillDemo('1001', '123')" class="px-2 py-2.5 bg-slate-100 hover:bg-indigo-50 hover:text-indigo-600 text-slate-700 text-xs font-medium rounded-lg border border-slate-200 transition-all flex flex-col items-center gap-1">
+                            <i class="fa-solid fa-user-graduate text-indigo-600"></i>
+                            <span>Siswa (1001)</span>
+                        </button>
+                    </div>
+                </div>
             </div>
 
             <!-- Footer Note -->
@@ -229,48 +255,63 @@
             announcements: [
                 { id: 1, text: "Diharapkan seluruh Guru Mapel untuk mengumpulkan rekap nilai semester ganjil paling lambat hari Jumat. Serta tingkatkan kedisiplinan pengisian jurnal kelas PWA SIM Spentes.", author: "Dr. Hj. Siti Aminah, S.Pd, M.Si", date: "6 November 2026" }
             ],
-            leaves: [],
-            substituteAssignments: [],
+            leaves: [
+                { 
+                    id: 1, 
+                    teacherName: "Dra. Hj. Nur Laila", 
+                    type: "Dinas Luar", 
+                    startDate: "2026-11-06", 
+                    endDate: "2026-11-07", 
+                    reason: "Undangan Workshop Kurikulum di Blitar", 
+                    status: "Disetujui", 
+                    note: "Silakan laksanakan tugas dengan baik.", 
+                    substituteList: [
+                        { jam: "2-3", kelas: "8A", mapel: "Matematika", guru: "Drs. H. Slamet Riyadi, M.Pd", tugas: "Kerjakan LKS halaman 45" },
+                        { jam: "4-5", kelas: "8B", mapel: "Matematika", guru: "Budi Santoso, S.Pd", tugas: "Latihan soal bab aljabar" }
+                    ] 
+                },
+                { 
+                    id: 2, 
+                    teacherName: "Eko Prasetyo, S.Pd", 
+                    type: "Sakit", 
+                    startDate: "2026-11-06", 
+                    endDate: "2026-11-06", 
+                    reason: "Demam dan beristirahat di rumah", 
+                    status: "Menunggu", 
+                    note: "-", 
+                    substituteList: [
+                        { jam: "3-4", kelas: "8B", mapel: "IPA", guru: "Budi Santoso, S.Pd", tugas: "Membaca bab sistem pencernaan" }
+                    ] 
+                }
+            ],
+            substituteAssignments: [
+                { id: 1, fromTeacher: "Dra. Hj. Nur Laila", jam: "2-3", kelas: "8A", mapel: "Matematika", tugas: "Kerjakan LKS halaman 45", status: "Aktif" },
+                { id: 2, fromTeacher: "Dra. Hj. Nur Laila", jam: "4-5", kelas: "8B", mapel: "Matematika", tugas: "Latihan soal bab aljabar", status: "Aktif" },
+                { id: 3, fromTeacher: "Eko Prasetyo, S.Pd", jam: "3-4", kelas: "8B", mapel: "IPA", tugas: "Membaca bab sistem pencernaan", status: "Aktif" }
+            ],
+            ekstrakurikuler: [
+                { id: 1, nama: "Pramuka (Wajib)", jadwal: "Jumat, 13.30 - 15.00 WIB", pembina: "Drs. H. Slamet Riyadi, M.Pd" },
+                { id: 2, nama: "Bola Voli", jadwal: "Rabu, 15.15 - 17.00 WIB", pembina: "Agus Prasetyo, S.Pd" },
+                { id: 3, nama: "PMR (Palang Merah Remaja)", jadwal: "Kamis, 15.15 - 16.30 WIB", pembina: "Dra. Hj. Nur Laila" }
+            ],
             students: [
-                { id: 1, nis: "1001", name: "Aditya Pratama", class: "8A", points: 30 },
-                { id: 2, nis: "1002", name: "Aurelia Salsabila", class: "8A", points: 0 },
-                { id: 3, nis: "1003", name: "Bima Arya", class: "8B", points: 15 },
-                { id: 4, nis: "1004", name: "Cintya Bella", class: "8B", points: 0 }
+                { id: 1, nis: "1001", nisn: "0081234567", name: "Aditya Pratama", class: "8A", points: 30, ekskulIds: [1, 2] },
+                { id: 2, nis: "1002", nisn: "0087654321", name: "Aurelia Salsabila", class: "8A", points: 0, ekskulIds: [1, 3] },
+                { id: 3, nis: "1003", nisn: "0091122334", name: "Bima Arya", class: "8B", points: 15, ekskulIds: [1, 2] },
+                { id: 4, nis: "1004", nisn: "0094433221", name: "Cintya Bella", class: "8B", points: 0, ekskulIds: [1] }
             ],
             teachersMatrix: [
-                { nip: "197001311999031002", name: "SUKARDI, M.Pd", mapel: "Kepala Sekolah", waliKelas: true, kesiswaan: false, kepsek: true },
-                { nip: "198104232023211004", name: "FATHUL MUIN, S.Pd", mapel: "PAI", waliKelas: false, kesiswaan: false, kepsek: false },
-                { nip: "198406172023212024", name: "NETIK WIDANUL JANNAH, S.PdI", mapel: "PAI", waliKelas: false, kesiswaan: false, kepsek: false },
-                { nip: "199101102019032005", name: "KRISTINA WIJI LESTARI, S.Pd", mapel: "P.A Katolik", waliKelas: false, kesiswaan: false, kepsek: false },
-                { nip: "198209052023211004", name: "DANANG SINDU WILIS, S.Ag", mapel: "PAI", waliKelas: false, kesiswaan: false, kepsek: false },
-                { nip: "199205162024211025", name: "BENI DEWANGGA, S.Pd", mapel: "Guru Mapel", waliKelas: false, kesiswaan: false, kepsek: false },
-                { nip: "199505042023212029", name: "AYU AMELIA PUTRI, S.Pd", mapel: "Guru Mapel", waliKelas: false, kesiswaan: false, kepsek: false },
-                { nip: "196611092003122006", name: "Dra. SURIPTIANI", mapel: "Guru Mapel", waliKelas: false, kesiswaan: false, kepsek: false },
-                { nip: "196808082007012038", name: "TUTIK SUSILOWATI, S.Pd", mapel: "Guru Mapel", waliKelas: false, kesiswaan: false, kepsek: false },
-                { nip: "199701112024212041", name: "YESI ANGGIANI, S.Pd", mapel: "Guru Mapel", waliKelas: false, kesiswaan: false, kepsek: false },
-                { nip: "199207012023212026", name: "TRI WULAN, S.Pd", mapel: "Guru Mapel", waliKelas: false, kesiswaan: false, kepsek: false },
-                { nip: "199610222025212048", name: "KURNIA WIJI ASTARI, S.Pd", mapel: "Guru Mapel", waliKelas: false, kesiswaan: false, kepsek: false },
-                { nip: "197104121998021006", name: "NUR QODARUN, S.Pd", mapel: "Guru Mapel", waliKelas: false, kesiswaan: false, kepsek: false },
-                { nip: "199109072022212010", name: "QONI'AH KUSUMA WARDANI, S.Pd", mapel: "Guru Mapel", waliKelas: false, kesiswaan: false, kepsek: false },
-                { nip: "199308242019031002", name: "M. MIFTAKHUL HUDA, S.Pd", mapel: "Guru Mapel", waliKelas: false, kesiswaan: false, kepsek: false },
-                { nip: "196801042007012019", name: "TARMINI, M.Pd", mapel: "Guru Mapel", waliKelas: false, kesiswaan: false, kepsek: false },
-                { nip: "197503202021212001", name: "S. WIJAYATI, S.Pd", mapel: "Guru Mapel", waliKelas: false, kesiswaan: false, kepsek: false },
-                { nip: "197004132005011010", name: "SUPRIHATIN, M.Pd", mapel: "Guru Mapel", waliKelas: false, kesiswaan: false, kepsek: false },
-                { nip: "197201012006041026", name: "SAMUK, S.Pd", mapel: "Guru Mapel", waliKelas: false, kesiswaan: false, kepsek: false },
-                { nip: "197108032006041016", name: "MOKHAMAD DARDIRI, S.Pd", mapel: "Guru Mapel", waliKelas: false, kesiswaan: false, kepsek: false },
-                { nip: "199601132024211017", name: "SIWI ARDHIAN, S.Pd.", mapel: "Guru Mapel", waliKelas: false, kesiswaan: false, kepsek: false },
-                { nip: "200007032024212008", name: "ULYA SHIVA URIDA, S.Pd", mapel: "Guru Mapel", waliKelas: false, kesiswaan: false, kepsek: false },
-                { nip: "196610021988032006", name: "TRI UTAMININGSIH, M.Pd", mapel: "Guru Mapel", waliKelas: false, kesiswaan: false, kepsek: false },
-                { nip: "199701052025211060", name: "REKRYANDRIE PRABANINGMAS SUSANTO, S.Sn", mapel: "Seni Budaya", waliKelas: false, kesiswaan: false, kepsek: false },
-                { nip: "197001012007012053", name: "YENI KUMALASASI, S.Pd", mapel: "Guru Mapel", waliKelas: false, kesiswaan: false, kepsek: false },
-                { nip: "197708092021212001", name: "KANTI SUGIARTI, S.Pd", mapel: "Guru Mapel", waliKelas: false, kesiswaan: false, kepsek: false },
-                { nip: "199107042022212012", name: "DIAN YULI ASTUTI, S.Pd", mapel: "Guru Mapel", waliKelas: false, kesiswaan: false, kepsek: false },
-                { nip: "199202032022212010", name: "TRI HENNY FEBRINING WULAN, S.Pd", mapel: "Guru Mapel", waliKelas: false, kesiswaan: false, kepsek: false }
+                { nip: "196805121990031004", name: "Drs. H. Slamet Riyadi, M.Pd", mapel: "Matematika", waliKelas: true, kesiswaan: false, kepsek: false },
+                { nip: "197203151998022001", name: "Dra. Hj. Nur Laila", mapel: "Bahasa Indonesia", waliKelas: false, kesiswaan: true, kepsek: false },
+                { nip: "198001102005011003", name: "Eko Prasetyo, S.Pd", mapel: "IPA", waliKelas: false, kesiswaan: false, kepsek: false }
             ],
             auditLogs: [
-                { text: "Sistem SIM Spentes diinisialisasi dengan 28 data guru resmi UPT SMP Negeri 1 Wates", time: "Hari ini" }
+                { text: "Dr. Hj. Siti Aminah, S.Pd, M.Si menyetujui izin guru Dra. Hj. Nur Laila", time: "Hari ini, 09:15 WIB" },
+                { text: "Ahmad Fauzi, S.Kom memperbarui matriks peran Wali Kelas 8A", time: "Kemarin, 14:30 WIB" }
             ],
-            studentPointsLog: []
+            studentPointsLog: [
+                { id: 1, studentName: "Aditya Pratama (8A)", category: "Prestasi", desc: "Juara 1 Lomba Akademik Tingkat Kabupaten", points: 30, date: "2026-11-04", recorder: "Ahmad Fauzi, S.Kom" }
+            ]
         };
 
         function togglePassword() {
@@ -283,6 +324,12 @@
                 pwdInput.type = 'password';
                 eyeIcon.classList.replace('fa-eye-slash', 'fa-eye');
             }
+        }
+
+        function fillDemo(username, password) {
+            document.getElementById('username').value = username;
+            document.getElementById('password').value = password;
+            showToast('Kredensial demo terisi otomatis!', 'success');
         }
 
         function showToast(message, type = 'success') {
@@ -306,40 +353,116 @@
             }, 3000);
         }
 
-        function handleLogin(event) {
+        async function fetchAppDataFromSupabase() {
+            try {
+                const { data: teachers, error: tErr } = await _supabase.from('teachers').select('*');
+                if (!tErr && teachers && teachers.length > 0) {
+                    appState.teachersMatrix = teachers.map(t => ({
+                        nip: t.nip,
+                        name: t.name,
+                        mapel: t.mapel,
+                        waliKelas: t.mapel.toLowerCase().includes('wali'),
+                        kesiswaan: false,
+                        kepsek: t.mapel.toLowerCase().includes('kepala') || t.nip === '197001311999031002'
+                    }));
+                }
+
+                const { data: students, error: sErr } = await _supabase.from('students').select('*');
+                if (!sErr && students && students.length > 0) {
+                    appState.students = students;
+                }
+            } catch (e) {
+                console.log('Menggunakan data lokal cadangan:', e);
+            }
+        }
+
+        async function handleLogin(event) {
             event.preventDefault();
             const usernameInput = document.getElementById('username').value.trim();
-            const password = document.getElementById('password').value;
+            const passwordInput = document.getElementById('password').value;
             const btn = document.getElementById('login-btn');
             
-            // Validasi khusus Admin
-            if (usernameInput === 'Admin') {
-                if (password !== 'Spentes$2026') {
-                    showToast('Password Admin salah!', 'error');
-                    return;
-                }
-            } else if (usernameInput.toLowerCase() === 'admin') {
-                showToast('Penulisan Username Admin harus tepat (huruf A besar: Admin)!', 'error');
-                return;
-            }
-
-            btn.innerHTML = `<i class="fa-solid fa-spinner animate-spin"></i> Memproses...`;
+            btn.innerHTML = `<i class="fa-solid fa-spinner animate-spin"></i> Menghubungkan Supabase...`;
             btn.disabled = true;
 
-            setTimeout(() => {
-                btn.innerHTML = `<span>Masuk Aplikasi</span><i class="fa-solid fa-arrow-right"></i>`;
-                btn.disabled = false;
-
-                if (usernameInput === 'Admin') {
+            try {
+                // 1. Cek Login Admin Utama
+                if (usernameInput === 'Admin' && passwordInput === 'Spentes$2026') {
                     appState.currentUser = { role: 'admin', name: 'Ahmad Fauzi, S.Kom', title: 'Administrator Sistem SIM Spentes' };
-                } else if (usernameInput === '197001311999031002') {
-                    appState.currentUser = { role: 'kasek', name: 'SUKARDI, M.Pd', title: 'Kepala UPT SMP Negeri 1 Wates' };
-                } else {
-                    appState.currentUser = { role: 'guru', name: 'Bapak/Ibu Guru', title: 'Guru Mata Pelajaran / Wali Kelas' };
+                    await fetchAppDataFromSupabase();
+                    btn.innerHTML = `<span>Masuk Aplikasi</span><i class="fa-solid fa-arrow-right"></i>`;
+                    btn.disabled = false;
+                    initDashboard();
+                    return;
                 }
 
+                // 2. Cek Login Guru / Kepala Sekolah dari Tabel Supabase 'teachers'
+                const { data: teacherData, error: teacherError } = await _supabase
+                    .from('teachers')
+                    .select('*')
+                    .eq('nip', usernameInput)
+                    .eq('password', passwordInput)
+                    .maybeSingle();
+
+                if (teacherData) {
+                    const isKepsek = teacherData.nip === '197001311999031002' || teacherData.mapel.toLowerCase().includes('kepala');
+                    appState.currentUser = { 
+                        role: isKepsek ? 'kasek' : 'guru', 
+                        name: teacherData.name, 
+                        title: isKepsek ? 'Kepala UPT SMP Negeri 1 Wates' : `${teacherData.mapel} - NIP: ${teacherData.nip}`,
+                        nip: teacherData.nip
+                    };
+                    await fetchAppDataFromSupabase();
+                    btn.innerHTML = `<span>Masuk Aplikasi</span><i class="fa-solid fa-arrow-right"></i>`;
+                    btn.disabled = false;
+                    initDashboard();
+                    return;
+                }
+
+                // 3. Cek Login Siswa dari Tabel Supabase 'students' atau Fallback Demo
+                const { data: studentData } = await _supabase
+                    .from('students')
+                    .select('*')
+                    .eq('nis', usernameInput)
+                    .maybeSingle();
+
+                if (studentData) {
+                    appState.currentUser = { role: 'murid', name: studentData.name, title: `Siswa Kelas ${studentData.class} | NIS: ${studentData.nis}`, data: studentData };
+                    await fetchAppDataFromSupabase();
+                    btn.innerHTML = `<span>Masuk Aplikasi</span><i class="fa-solid fa-arrow-right"></i>`;
+                    btn.disabled = false;
+                    initDashboard();
+                    return;
+                }
+
+                // Fallback Demo Akses Cepat (jika Supabase belum diisi atau offline)
+                const uLower = usernameInput.toLowerCase();
+                if (uLower === 'guru1' || uLower === 'guru') {
+                    appState.currentUser = { role: 'guru', name: 'Drs. H. Slamet Riyadi, M.Pd', title: 'Guru Mata Pelajaran / Wali Kelas 8A' };
+                } else if (uLower === 'kepsek' || uLower === 'kasek') {
+                    appState.currentUser = { role: 'kasek', name: 'Dr. Hj. Siti Aminah, S.Pd, M.Si', title: 'Kepala UPT SMP Negeri 1 Wates' };
+                } else if (uLower === 'admin') {
+                    appState.currentUser = { role: 'admin', name: 'Ahmad Fauzi, S.Kom', title: 'Administrator Sistem SIM Spentes' };
+                } else if (usernameInput === '1001') {
+                    appState.currentUser = { role: 'murid', name: 'Aditya Pratama', title: 'Siswa Kelas 8A | NIS: 1001', data: appState.students[0] };
+                } else {
+                    showToast('Username atau password salah / tidak ditemukan di database.', 'error');
+                    btn.innerHTML = `<span>Masuk Aplikasi</span><i class="fa-solid fa-arrow-right"></i>`;
+                    btn.disabled = false;
+                    return;
+                }
+
+                await fetchAppDataFromSupabase();
+                btn.innerHTML = `<span>Masuk Aplikasi</span><i class="fa-solid fa-arrow-right"></i>`;
+                btn.disabled = false;
                 initDashboard();
-            }, 600);
+
+            } catch (err) {
+                console.error(err);
+                showToast('Gagal terhubung ke database Supabase.', 'error');
+                btn.innerHTML = `<span>Masuk Aplikasi</span><i class="fa-solid fa-arrow-right"></i>`;
+                btn.disabled = false;
+            }
         }
 
         function initDashboard() {
@@ -352,6 +475,7 @@
             const badge = document.getElementById('role-badge');
             if(appState.currentUser.role === 'guru') badge.textContent = 'Akun Guru Mapel & Wali Kelas';
             else if(appState.currentUser.role === 'kasek') badge.textContent = 'Akun Kepala Sekolah';
+            else if(appState.currentUser.role === 'murid') badge.textContent = 'Akun Siswa';
             else badge.textContent = 'Akun Admin SIM Spentes';
 
             renderSidebar();
@@ -363,7 +487,13 @@
             const menuContainer = document.getElementById('sidebar-menu');
             let html = '';
 
-            if (appState.currentUser.role === 'guru') {
+            if (appState.currentUser.role === 'murid') {
+                html = `
+                    <button type="button" onclick="switchTab('dashboard')" id="nav-dashboard" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all text-left">
+                        <i class="fa-solid fa-house text-indigo-400 w-5"></i><span>Dashboard Siswa</span>
+                    </button>
+                `;
+            } else if (appState.currentUser.role === 'guru') {
                 html = `
                     <button type="button" onclick="switchTab('dashboard')" id="nav-dashboard" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all text-left">
                         <i class="fa-solid fa-house text-indigo-400 w-5"></i><span>Dashboard</span>
@@ -376,9 +506,6 @@
                     </button>
                     <button type="button" onclick="switchTab('walikelas')" id="nav-walikelas" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all text-left">
                         <i class="fa-solid fa-users-rectangle text-indigo-400 w-5"></i><span>Input Kehadiran Siswa</span>
-                    </button>
-                    <button type="button" onclick="switchTab('poin')" id="nav-poin" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all text-left">
-                        <i class="fa-solid fa-medal text-indigo-400 w-5"></i><span>Pencatatan Poin Prestasi</span>
                     </button>
                 `;
             } else if (appState.currentUser.role === 'kasek') {
@@ -397,9 +524,6 @@
                     </button>
                     <button type="button" onclick="switchTab('rekap-siswa')" id="nav-rekap-siswa" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all text-left">
                         <i class="fa-solid fa-user-graduate text-indigo-400 w-5"></i><span>Rekap Siswa</span>
-                    </button>
-                    <button type="button" onclick="switchTab('poin')" id="nav-poin" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all text-left">
-                        <i class="fa-solid fa-medal text-indigo-400 w-5"></i><span>Pencatatan Poin Prestasi</span>
                     </button>
                 `;
             } else {
@@ -586,7 +710,83 @@
                 return;
             }
 
-            if (appState.currentUser.role === 'guru') {
+            if (appState.currentUser.role === 'murid') {
+                if (tabId === 'dashboard') {
+                    titleEl.textContent = 'Dashboard Siswa';
+                    subEl.textContent = 'Profil Identitas, Ekstrakurikuler, dan Poin Prestasi Karakter';
+                    
+                    const me = appState.currentUser.data;
+                    
+                    // Relasi: Ambil data Ekstrakurikuler berdasarkan ID yang dimiliki murid
+                    const myEkskul = me.ekskulIds.map(id => appState.ekstrakurikuler.find(e => e.id === id)).filter(Boolean);
+                    const ekskulHtml = myEkskul.length > 0 ? myEkskul.map(e => `
+                        <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-700 flex flex-col gap-1 transition-all hover:bg-slate-800/80">
+                            <h5 class="text-sm font-bold text-white"><i class="fa-solid fa-shapes text-indigo-400 mr-2"></i>${e.nama}</h5>
+                            <p class="text-xs text-slate-300 mt-1"><i class="fa-regular fa-clock text-slate-500 w-4"></i> ${e.jadwal}</p>
+                            <p class="text-xs text-slate-400"><i class="fa-solid fa-user-tie text-slate-500 w-4"></i> Pembina: ${e.pembina}</p>
+                        </div>
+                    `).join('') : '<p class="text-xs text-slate-500 bg-slate-900/40 p-4 rounded-xl border border-slate-800 text-center">Belum ada ekstrakurikuler yang diiikuti.</p>';
+
+                    // Filter Riwayat Poin berdasarkan Nama Siswa
+                    const myPoints = appState.studentPointsLog.filter(l => l.studentName.includes(me.name));
+                    const pointsHtml = myPoints.length > 0 ? myPoints.map(l => `
+                        <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-700 flex justify-between items-center mb-2">
+                            <div>
+                                <p class="text-xs font-bold text-white mb-0.5">${l.desc}</p>
+                                <p class="text-[10px] text-slate-400 uppercase tracking-wider">${l.date} &bull; ${l.category}</p>
+                            </div>
+                            <span class="px-2.5 py-1.5 rounded-lg bg-emerald-500/20 text-emerald-300 font-bold text-xs border border-emerald-500/30">+${l.points} Poin</span>
+                        </div>
+                    `).join('') : '<p class="text-xs text-slate-500 bg-slate-900/40 p-4 rounded-xl border border-slate-800 text-center">Belum ada riwayat perolehan poin.</p>';
+
+                    bodyEl.innerHTML = `
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                            <!-- Kartu Identitas -->
+                            <div class="p-6 rounded-2xl bg-gradient-to-br from-indigo-950/80 to-slate-900 border border-indigo-500/30 shadow-lg shadow-indigo-900/20 relative overflow-hidden">
+                                <i class="fa-solid fa-id-card absolute -bottom-6 -right-6 text-7xl text-indigo-500/10 rotate-12"></i>
+                                <h4 class="text-[10px] font-bold text-indigo-400 mb-4 uppercase tracking-wider">Identitas Peserta Didik</h4>
+                                <div class="space-y-3 text-sm text-slate-200 relative z-10">
+                                    <div class="flex border-b border-indigo-500/20 pb-2"><span class="w-20 text-slate-400 text-xs">Nama Lengkap</span> <strong class="text-white">${me.name}</strong></div>
+                                    <div class="flex border-b border-indigo-500/20 pb-2"><span class="w-20 text-slate-400 text-xs">Kelas</span> <strong class="text-white">${me.class}</strong></div>
+                                    <div class="flex border-b border-indigo-500/20 pb-2"><span class="w-20 text-slate-400 text-xs">NIS</span> <span>${me.nis}</span></div>
+                                    <div class="flex"><span class="w-20 text-slate-400 text-xs">NISN</span> <span class="font-mono text-indigo-300">${me.nisn}</span></div>
+                                </div>
+                            </div>
+                            <!-- Kartu Saldo Poin -->
+                            <div class="p-6 rounded-2xl bg-gradient-to-br from-emerald-950/40 to-slate-900 border border-emerald-500/30 shadow-lg flex flex-col justify-center items-center text-center relative overflow-hidden">
+                                <i class="fa-solid fa-medal absolute -bottom-4 -left-4 text-7xl text-emerald-500/10 -rotate-12"></i>
+                                <h4 class="text-[10px] font-bold text-emerald-400 mb-2 uppercase tracking-wider relative z-10">Total Poin Karakter (Prestasi)</h4>
+                                <div class="text-6xl font-black text-emerald-400 mb-2 drop-shadow-md relative z-10">${me.points}</div>
+                                <p class="text-[11px] text-slate-400 relative z-10">Poin diraih dari kompetisi dan keaktifan.</p>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- Ekstrakurikuler yang diikuti -->
+                            <div class="bg-slate-800/40 rounded-2xl p-5 border border-slate-700/60">
+                                <h4 class="text-sm font-semibold text-white mb-4 flex items-center gap-2">
+                                    <div class="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center"><i class="fa-solid fa-campground"></i></div>
+                                    Ekstrakurikuler Saya
+                                </h4>
+                                <div class="space-y-3">
+                                    ${ekskulHtml}
+                                </div>
+                            </div>
+                            
+                            <!-- Riwayat Poin Prestasi -->
+                            <div class="bg-slate-800/40 rounded-2xl p-5 border border-slate-700/60">
+                                <h4 class="text-sm font-semibold text-white mb-4 flex items-center gap-2">
+                                    <div class="w-8 h-8 rounded-lg bg-indigo-500/20 text-indigo-400 flex items-center justify-center"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                                    Riwayat Perolehan Poin
+                                </h4>
+                                <div>
+                                    ${pointsHtml}
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }
+            } else if (appState.currentUser.role === 'guru') {
                 if (tabId === 'dashboard') {
                     titleEl.textContent = 'Dashboard Guru Mapel & Wali Kelas';
                     subEl.textContent = 'Profil, Pengumuman Kepala Sekolah, & Daftar Guru Izin';
@@ -602,25 +802,72 @@
                         </div>
                     `).join('');
 
+                    let approvedLeavesHtml = appState.leaves.filter(l => l.status === 'Disetujui').map(l => {
+                        let classesStr = l.substituteList.map(s => `Kelas ${s.kelas} (${s.mapel})`).join(', ');
+                        return `
+                        <tr class="hover:bg-slate-700/30">
+                            <td class="p-3 font-medium text-white">${l.teacherName}</td>
+                            <td class="p-3"><span class="px-2 py-0.5 rounded text-xs bg-amber-500/20 text-amber-300">${l.type}</span></td>
+                            <td class="p-3 text-xs">${l.startDate} s.d ${l.endDate}</td>
+                            <td class="p-3 text-xs">${classesStr}</td>
+                            <td class="p-3 text-center">
+                                <button type="button" onclick="showLeaveDetailModal(${l.id})" class="px-3 py-1 bg-indigo-600/20 hover:bg-indigo-600 text-indigo-300 hover:text-white rounded text-xs">Rincian</button>
+                            </td>
+                        </tr>
+                    `;}).join('');
+
+                    let subsHtml = appState.substituteAssignments.map(s => `
+                        <div class="p-4 rounded-xl bg-amber-950/30 border border-amber-500/30 flex items-center justify-between mb-3">
+                            <div>
+                                <span class="px-2 py-0.5 rounded text-[10px] bg-amber-500/20 text-amber-300 font-semibold">Tugas Pengganti Masuk</span>
+                                <h5 class="text-sm font-bold text-white mt-1">Menggantikan: ${s.fromTeacher}</h5>
+                                <p class="text-xs text-slate-300 mt-0.5">Kelas ${s.kelas} &bull; Jam Ke-${s.jam} &bull; Mapel ${s.mapel}<br>Tugas: ${s.tugas}</p>
+                            </div>
+                            <button type="button" onclick="showToast('Tugas pengganti dikonfirmasi hadir', 'success')" class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-semibold">Konfirmasi</button>
+                        </div>
+                    `).join('');
+
                     bodyEl.innerHTML = `
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                             <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-700">
                                 <p class="text-xs text-slate-400">Pengajuan Izin Aktif</p>
-                                <p class="text-2xl font-bold text-white mt-1">0</p>
-                                <span class="text-[11px] text-emerald-400 mt-2 inline-block"><i class="fa-solid fa-check"></i> Siap digunakan</span>
+                                <p class="text-2xl font-bold text-white mt-1">${appState.leaves.filter(l => l.teacherName.includes('Slamet')).length}</p>
+                                <span class="text-[11px] text-emerald-400 mt-2 inline-block"><i class="fa-solid fa-check"></i> Jadwal terpantau sistem</span>
                             </div>
                             <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-700">
                                 <p class="text-xs text-slate-400">Tugas Pengganti Masuk</p>
-                                <p class="text-2xl font-bold text-indigo-400 mt-1">0</p>
-                                <span class="text-[11px] text-amber-400 mt-2 inline-block"><i class="fa-solid fa-bell"></i> Tidak ada tugas aktif</span>
+                                <p class="text-2xl font-bold text-indigo-400 mt-1">${appState.substituteAssignments.length}</p>
+                                <span class="text-[11px] text-amber-400 mt-2 inline-block"><i class="fa-solid fa-bell"></i> Perlu konfirmasi mengajar</span>
                             </div>
                             <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-700">
-                                <p class="text-xs text-slate-400">Status Sistem</p>
-                                <p class="text-2xl font-bold text-emerald-400 mt-1">Online</p>
-                                <span class="text-[11px] text-indigo-400 mt-2 inline-block">Terhubung ke Supabase</span>
+                                <p class="text-xs text-slate-400">Tugas Wali Kelas</p>
+                                <p class="text-2xl font-bold text-white mt-1">Kelas 8A</p>
+                                <span class="text-[11px] text-indigo-400 mt-2 inline-block">Absensi S, I, A Siap Input</span>
                             </div>
                         </div>
+
                         ${announcementsHtml}
+                        ${subsHtml}
+
+                        <div>
+                            <h4 class="text-sm font-semibold text-white mb-3">Daftar Guru Izin Hari Ini (Disetujui Kepala Sekolah)</h4>
+                            <div class="overflow-x-auto rounded-xl border border-slate-700">
+                                <table class="w-full text-left text-sm text-slate-300">
+                                    <thead class="bg-slate-900 text-xs uppercase text-slate-400">
+                                        <tr>
+                                            <th class="p-3">Nama Guru</th>
+                                            <th class="p-3">Jenis Izin</th>
+                                            <th class="p-3">Rentang Tanggal</th>
+                                            <th class="p-3">Kelas Ditinggalkan</th>
+                                            <th class="p-3 text-center">Rincian</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-slate-700">
+                                        ${approvedLeavesHtml}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     `;
                 } else if (tabId === 'izin') {
                     titleEl.textContent = 'Form Pengajuan Izin';
@@ -650,33 +897,189 @@
                                 <label class="block text-xs font-semibold uppercase text-slate-400 mb-1">Alasan & Keterangan Izin</label>
                                 <textarea id="leave-reason" rows="2" required placeholder="Tuliskan alasan izin secara rinci..." class="w-full p-3 bg-slate-900 border border-slate-700 rounded-xl text-sm text-white"></textarea>
                             </div>
+
+                            <div class="pt-3 border-t border-slate-700">
+                                <div class="flex items-center justify-between mb-3">
+                                    <div>
+                                        <h4 class="text-sm font-semibold text-white">Daftar Tugas Pengganti Kelas (Multi-Kelas)</h4>
+                                        <p class="text-xs text-slate-400">Anda dapat menambahkan lebih dari satu kelas yang ditinggalkan.</p>
+                                    </div>
+                                    <button type="button" onclick="addLeaveTaskRow()" class="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs font-semibold flex items-center gap-1.5">
+                                        <i class="fa-solid fa-plus"></i><span>Tambah Tugas Kelas</span>
+                                    </button>
+                                </div>
+
+                                <div id="task-rows-container" class="space-y-3">
+                                    <div class="grid grid-cols-1 sm:grid-cols-5 gap-2 items-center bg-slate-900/60 p-3 rounded-xl border border-slate-700 task-row">
+                                        <input type="text" placeholder="Jam Ke (cth: 2-3)" class="sub-jam p-2.5 bg-slate-950 border border-slate-700 rounded-xl text-xs text-white" required>
+                                        <input type="text" placeholder="Kelas (cth: 8A)" class="sub-kelas p-2.5 bg-slate-950 border border-slate-700 rounded-xl text-xs text-white" required>
+                                        <input type="text" placeholder="Mata Pelajaran" class="sub-mapel p-2.5 bg-slate-950 border border-slate-700 rounded-xl text-xs text-white" required>
+                                        <select class="sub-guru p-2.5 bg-slate-950 border border-slate-700 rounded-xl text-xs text-white">
+                                            <option>Dra. Hj. Nur Laila</option>
+                                            <option>Agus Prasetyo, S.Pd</option>
+                                            <option>Dewi Lestari, S.Pd</option>
+                                            <option>Budi Santoso, S.Pd</option>
+                                        </select>
+                                        <div class="flex gap-2">
+                                            <input type="text" placeholder="Rincian Tugas Siswa..." class="sub-tugas p-2.5 bg-slate-950 border border-slate-700 rounded-xl text-xs text-white flex-grow" required>
+                                            <button type="button" onclick="removeTaskRow(this)" class="px-2.5 py-2.5 bg-rose-600/20 hover:bg-rose-600 text-rose-300 hover:text-white rounded-xl text-xs" title="Hapus Baris"><i class="fa-solid fa-trash"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                             <button type="submit" class="w-full py-3.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl font-semibold text-sm shadow-lg shadow-indigo-600/30">Kirim Pengajuan Izin</button>
                         </form>
                     `;
                 } else if (tabId === 'riwayat') {
                     titleEl.textContent = 'Riwayat Pengajuan Izin';
-                    bodyEl.textContent = 'Belum ada riwayat pengajuan izin.';
+                    subEl.textContent = 'Daftar pengajuan izin yang pernah Anda buat beserta rincian kelas';
+                    
+                    let myLeaves = appState.leaves.map(l => {
+                        let classesStr = l.substituteList.map(s => `Kelas ${s.kelas} (${s.mapel}, Jam ${s.jam})`).join('; ');
+                        return `
+                        <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-700 flex items-center justify-between mb-3">
+                            <div>
+                                <span class="px-2 py-0.5 rounded text-xs ${l.status === 'Disetujui' ? 'bg-emerald-500/20 text-emerald-300' : 'bg-amber-500/20 text-amber-300'} font-semibold">${l.status}</span>
+                                <h4 class="text-sm font-bold text-white mt-1">${l.type} &bull; ${l.startDate} s.d ${l.endDate}</h4>
+                                <p class="text-xs text-slate-300 mt-1">Alasan: ${l.reason}</p>
+                                <p class="text-xs text-slate-400 mt-0.5">Tugas Kelas: ${classesStr}</p>
+                            </div>
+                            <button type="button" onclick="showLeaveDetailModal(${l.id})" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-xl text-xs">Detail</button>
+                        </div>
+                    `;}).join('');
+
+                    bodyEl.innerHTML = `<div class="space-y-3">${myLeaves}</div>`;
                 } else if (tabId === 'walikelas') {
                     titleEl.textContent = 'Input Rekap Kehadiran Siswa (Wali Kelas)';
-                    bodyEl.innerHTML = `<p class="text-xs text-slate-400">Modul siap dioperasikan.</p>`;
+                    subEl.textContent = 'Fitur dalam tahap pengembangan';
+                    bodyEl.innerHTML = `
+                        <div class="p-12 rounded-2xl bg-slate-900/80 border border-slate-700 text-center space-y-4 my-8">
+                            <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-indigo-600/20 text-indigo-400 mb-2">
+                                <i class="fa-solid fa-person-digging text-3xl"></i>
+                            </div>
+                            <h4 class="text-lg font-bold text-white">Fitur Dalam Tahap Pengembangan</h4>
+                            <p class="text-xs text-slate-400 max-w-md mx-auto">Modul Input Kehadiran Siswa S, I, A sedang disiapkan untuk pembaruan berikutnya sesuai rancangan sekolah.</p>
+                        </div>
+                    `;
                 }
             } else if (appState.currentUser.role === 'kasek') {
                 if (tabId === 'dashboard') {
                     titleEl.textContent = 'Dashboard Kepala Sekolah';
                     subEl.textContent = 'Papan pengumuman seluruh guru & daftar izin menunggu persetujuan';
-                    bodyEl.innerHTML = `<p class="text-xs text-slate-400">Tidak ada pengajuan izin menunggu.</p>`;
+                    
+                    let pendingLeaves = appState.leaves.filter(l => l.status === 'Menunggu');
+                    let pendingHtml = pendingLeaves.length === 0 ? '<p class="text-xs text-slate-400">Tidak ada pengajuan izin yang menunggu.</p>' : pendingLeaves.map(l => {
+                        let classesStr = l.substituteList.map(s => `Kelas ${s.kelas} (${s.mapel}, Guru: ${s.guru})`).join(' | ');
+                        return `
+                        <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-700 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-3">
+                            <div>
+                                <div class="flex items-center gap-2">
+                                    <h5 class="text-sm font-bold text-white">${l.teacherName}</h5>
+                                    <span class="px-2 py-0.5 rounded text-[10px] bg-amber-500/20 text-amber-300 font-semibold">Menunggu</span>
+                                </div>
+                                <p class="text-xs text-slate-300 mt-1">Jenis: <strong>${l.type}</strong> &bull; Periode: <strong>${l.startDate} s.d ${l.endDate}</strong></p>
+                                <p class="text-xs text-slate-400 mt-0.5">Alasan: ${l.reason}</p>
+                                <p class="text-xs text-indigo-300 mt-1">Tugas Pengganti: ${classesStr}</p>
+                            </div>
+                            <div class="flex gap-2 w-full sm:w-auto justify-end">
+                                <button type="button" onclick="approveLeave(${l.id}, 'Disetujui')" class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-semibold">Setujui</button>
+                                <button type="button" onclick="approveLeave(${l.id}, 'Ditolak')" class="px-3 py-1.5 bg-rose-600/20 hover:bg-rose-600 text-rose-300 hover:text-white rounded-xl text-xs font-semibold">Tolak</button>
+                            </div>
+                        </div>
+                    `;}).join('');
+
+                    let activeAnnouncementsHtml = appState.announcements.map(a => `
+                        <div class="p-3 rounded-xl bg-slate-950 border border-slate-700 flex items-center justify-between mb-2 text-xs">
+                            <div>
+                                <p class="text-slate-200 font-medium">${a.text}</p>
+                                <span class="text-slate-400 text-[10px]">Diposting: ${a.author} &bull; ${a.date}</span>
+                            </div>
+                            <button type="button" onclick="deleteAnnouncement(${a.id})" class="px-2.5 py-1.5 bg-rose-600/20 hover:bg-rose-600 text-rose-300 hover:text-white rounded-xl text-xs flex items-center gap-1 shrink-0" title="Hapus Pengumuman"><i class="fa-solid fa-trash"></i> Hapus</button>
+                        </div>
+                    `).join('');
+
+                    bodyEl.innerHTML = `
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-700">
+                                <p class="text-xs text-slate-400">Izin Menunggu Persetujuan</p>
+                                <p class="text-2xl font-bold text-amber-400 mt-1">${pendingLeaves.length}</p>
+                                <span class="text-[11px] text-amber-400 mt-2 inline-block"><i class="fa-solid fa-clock"></i> Perlu tindakan segera</span>
+                            </div>
+                            <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-700">
+                                <p class="text-xs text-slate-400">Total Guru Hadir Hari Ini</p>
+                                <p class="text-2xl font-bold text-emerald-400 mt-1">42 / 45</p>
+                                <span class="text-[11px] text-emerald-400 mt-2 inline-block"><i class="fa-solid fa-check"></i> 3 Guru Dinas Luar/Izin</span>
+                            </div>
+                            <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-700">
+                                <p class="text-xs text-slate-400">Rekap Siswa (S, I, A)</p>
+                                <p class="text-2xl font-bold text-white mt-1">Aman</p>
+                                <span class="text-[11px] text-indigo-400 mt-2 inline-block">Semua wali kelas telah input</span>
+                            </div>
+                        </div>
+
+                        <div class="p-5 rounded-xl bg-slate-900/80 border border-slate-700 space-y-4">
+                            <div>
+                                <h4 class="text-sm font-semibold text-white mb-2"><i class="fa-solid fa-bullhorn text-indigo-400 mr-2"></i> Buat Pengumuman untuk Seluruh Guru</h4>
+                                <textarea id="announcement-input" rows="2" placeholder="Tulis pengumuman baru..." class="w-full p-3 bg-slate-950 border border-slate-700 rounded-xl text-xs text-white mb-3"></textarea>
+                                <button type="button" onclick="postAnnouncement()" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs font-semibold">Publikasikan Pengumuman</button>
+                            </div>
+                            <div class="pt-3 border-t border-slate-800">
+                                <h5 class="text-xs font-semibold uppercase text-slate-400 mb-2">Daftar Pengumuman Aktif (Kelola / Hapus):</h5>
+                                <div class="space-y-2 max-h-48 overflow-y-auto">
+                                    ${activeAnnouncementsHtml}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h4 class="text-sm font-semibold text-white mb-3">Daftar Guru Izin (Status Menunggu)</h4>
+                            <div class="space-y-3">
+                                ${pendingHtml}
+                            </div>
+                        </div>
+                    `;
                 } else if (tabId === 'persetujuan') {
                     titleEl.textContent = 'Persetujuan Izin Guru';
-                    bodyEl.innerHTML = `<p class="text-xs text-slate-400">Tidak ada izin.</p>`;
+                    subEl.textContent = 'Kelola semua pengajuan izin guru (Dilengkapi Filter Rentang Tanggal)';
+                    renderKasekLeavesTable('Menunggu');
                 } else if (tabId === 'riwayat-kasek') {
                     titleEl.textContent = 'Riwayat Persetujuan Izin';
-                    bodyEl.innerHTML = `<p class="text-xs text-slate-400">Belum ada arsip.</p>`;
+                    subEl.textContent = 'Arsip izin yang telah disetujui atau ditolak';
+                    renderKasekLeavesTable('Disetujui');
                 } else if (tabId === 'rekap-guru') {
                     titleEl.textContent = 'Rekap Kehadiran Guru';
-                    bodyEl.innerHTML = `<p class="text-xs text-slate-400">Data rekap siap.</p>`;
+                    subEl.textContent = 'Filter berdasarkan tanggal, nama guru, dan jenis izin';
+                    bodyEl.innerHTML = `
+                        <div class="flex flex-wrap gap-3 mb-4">
+                            <input type="date" class="p-2 bg-slate-900 border border-slate-700 rounded-xl text-xs text-white">
+                            <input type="text" placeholder="Cari nama guru..." class="p-2 bg-slate-900 border border-slate-700 rounded-xl text-xs text-white flex-grow">
+                            <button type="button" onclick="showToast('Filter rekap guru diterapkan', 'success')" class="px-4 py-2 bg-indigo-600 text-white rounded-xl text-xs">Filter</button>
+                        </div>
+                        <div class="overflow-x-auto rounded-xl border border-slate-700">
+                            <table class="w-full text-left text-sm text-slate-300">
+                                <thead class="bg-slate-900 text-xs uppercase text-slate-400">
+                                    <tr><th class="p-3">Nama Guru</th><th class="p-3">Total Dinas Luar</th><th class="p-3">Total Sakit</th><th class="p-3">Total Pribadi</th></tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-700 text-xs">
+                                    <tr><td class="p-3">Dra. Hj. Nur Laila</td><td class="p-3">3 Kali</td><td class="p-3">1 Kali</td><td class="p-3">0 Kali</td></tr>
+                                    <tr><td class="p-3">Eko Prasetyo, S.Pd</td><td class="p-3">1 Kali</td><td class="p-3">2 Kali</td><td class="p-3">1 Kali</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    `;
                 } else if (tabId === 'rekap-siswa') {
                     titleEl.textContent = 'Rekap Kehadiran Siswa';
-                    bodyEl.innerHTML = `<p class="text-xs text-slate-400">Data siswa siap.</p>`;
+                    subEl.textContent = 'Fitur dalam tahap pengembangan';
+                    bodyEl.innerHTML = `
+                        <div class="p-12 rounded-2xl bg-slate-900/80 border border-slate-700 text-center space-y-4 my-8">
+                            <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-indigo-600/20 text-indigo-400 mb-2">
+                                <i class="fa-solid fa-person-digging text-3xl"></i>
+                            </div>
+                            <h4 class="text-lg font-bold text-white">Fitur Dalam Tahap Pengembangan</h4>
+                            <p class="text-xs text-slate-400 max-w-md mx-auto">Modul Rekap Kehadiran Siswa untuk Kepala Sekolah sedang disiapkan dalam pembaruan berikutnya.</p>
+                        </div>
+                    `;
                 }
             } else {
                 if (tabId === 'dashboard') {
@@ -685,9 +1088,9 @@
                     bodyEl.innerHTML = `
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                             <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-700">
-                                <p class="text-xs text-slate-400">Total Guru Terdaftar</p>
-                                <p class="text-2xl font-bold text-white mt-1">28 Guru</p>
-                                <span class="text-[11px] text-emerald-400 mt-2 inline-block">Resmi UPT SMPN 1 Wates</span>
+                                <p class="text-xs text-slate-400">Total Pengguna Aktif</p>
+                                <p class="text-2xl font-bold text-white mt-1">752</p>
+                                <span class="text-[11px] text-emerald-400 mt-2 inline-block">Guru, TU, Siswa, Wali Murid</span>
                             </div>
                             <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-700">
                                 <p class="text-xs text-slate-400">Arsitektur Backend</p>
@@ -700,9 +1103,15 @@
                                 <span class="text-[11px] text-emerald-400 mt-2 inline-block">Optimal di Komputer & HP</span>
                             </div>
                         </div>
+
+                        <div class="p-5 rounded-xl bg-slate-900/80 border border-slate-700">
+                            <h4 class="text-sm font-semibold text-white mb-2"><i class="fa-solid fa-bolt text-indigo-400 mr-2"></i> Modul Pengembangan Masa Depan (Scalability)</h4>
+                            <p class="text-xs text-slate-300">Arsitektur API-First memisahkan frontend PWA dengan database Supabase. Tabel konfigurasi dinamis siap menampung modul tambahan tanpa merusak skema.</p>
+                        </div>
                     `;
                 } else if (tabId === 'matrix') {
-                    titleEl.textContent = 'Matriks Peran Dinamis Guru (28 Guru Resmi)';
+                    titleEl.textContent = 'Matriks Peran Dinamis Guru';
+                    subEl.textContent = 'Ubah tugas tambahan guru (Wali Kelas, Kesiswaan, Kepsek) tanpa buat akun baru';
                     let matrixRows = appState.teachersMatrix.map((t, idx) => `
                         <tr class="hover:bg-slate-700/30">
                             <td class="p-3 font-mono text-xs text-indigo-400">${t.nip}</td>
@@ -717,9 +1126,9 @@
                         </tr>
                     `).join('');
                     bodyEl.innerHTML = `
-                        <div class="overflow-x-auto rounded-xl border border-slate-700 max-h-96 overflow-y-auto">
+                        <div class="overflow-x-auto rounded-xl border border-slate-700">
                             <table class="w-full text-left text-sm text-slate-300">
-                                <thead class="bg-slate-900 text-xs uppercase text-slate-400 sticky top-0">
+                                <thead class="bg-slate-900 text-xs uppercase text-slate-400">
                                     <tr><th class="p-3">NIP</th><th class="p-3">Nama Guru</th><th class="p-3">Mapel</th><th class="p-3 text-center">Wali Kelas</th><th class="p-3 text-center">Kesiswaan</th></tr>
                                 </thead>
                                 <tbody class="divide-y divide-slate-700 text-xs">${matrixRows}</tbody>
@@ -728,16 +1137,18 @@
                     `;
                 } else if (tabId === 'users') {
                     titleEl.textContent = 'Manajemen User Massal (Impor/Ekspor Excel)';
+                    subEl.textContent = 'Kelola akun Guru, TU, Siswa, & Wali Murid (Format WM-[NIS])';
                     bodyEl.innerHTML = `
                         <div class="p-6 rounded-xl bg-slate-900/80 border border-slate-700 text-center space-y-4">
                             <i class="fa-solid fa-file-excel text-4xl text-emerald-400"></i>
                             <h4 class="text-sm font-semibold text-white">Unggah Berkas Excel Pengguna</h4>
-                            <p class="text-xs text-slate-400 max-w-md mx-auto">Impor data massal untuk 28 guru resmi UPT SMPN 1 Wates.</p>
-                            <button type="button" onclick="showToast('Modul impor siap', 'success')" class="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-semibold">Proses Impor Excel</button>
+                            <p class="text-xs text-slate-400 max-w-md mx-auto">Impor data massal untuk akun Guru, TU, Siswa, dan Wali Murid otomatis terhubung dengan sistem.</p>
+                            <button type="button" onclick="simulateExcelImport()" class="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-semibold">Proses Impor Excel</button>
                         </div>
                     `;
                 } else if (tabId === 'audit') {
                     titleEl.textContent = 'Audit Log Aktivitas Sistem';
+                    subEl.textContent = 'Catatan perubahan nilai, persetujuan izin, dan pembaruan sistem';
                     let logsHtml = appState.auditLogs.map(l => `
                         <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-700 text-xs flex justify-between items-center mb-2">
                             <span class="text-slate-200"><i class="fa-solid fa-circle-dot text-indigo-400 mr-2"></i>${l.text}</span>
@@ -745,6 +1156,18 @@
                         </div>
                     `).join('');
                     bodyEl.innerHTML = `<div class="space-y-2">${logsHtml}</div>`;
+                } else if (tabId === 'rekap-siswa') {
+                    titleEl.textContent = 'Rekap Kehadiran Siswa Semua Kelas';
+                    subEl.textContent = 'Fitur dalam tahap pengembangan';
+                    bodyEl.innerHTML = `
+                        <div class="p-12 rounded-2xl bg-slate-900/80 border border-slate-700 text-center space-y-4 my-8">
+                            <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-indigo-600/20 text-indigo-400 mb-2">
+                                <i class="fa-solid fa-person-digging text-3xl"></i>
+                            </div>
+                            <h4 class="text-lg font-bold text-white">Fitur Dalam Tahap Pengembangan</h4>
+                            <p class="text-xs text-slate-400 max-w-md mx-auto">Modul Rekap Kehadiran Siswa sedang disiapkan untuk pembaruan berikutnya.</p>
+                        </div>
+                    `;
                 }
             }
         }
@@ -766,10 +1189,93 @@
             const type = document.getElementById('point-category-type').value;
             if(type === 'khusus') {
                 const val = document.getElementById('point-khusus-val').value;
-                const mapKhusus = { 'Ketua OSIS': 16, 'Wakil Ketua OSIS': 8, 'Ketua Ekstrakurikuler': 8, 'Peserta Jambore Nasional': 60, 'Peserta Jambore Provinsi': 30 };
+                const mapKhusus = {
+                    'Ketua OSIS': 16,
+                    'Wakil Ketua OSIS': 8,
+                    'Ketua Ekstrakurikuler': 8,
+                    'Peserta Jambore Nasional': 60,
+                    'Peserta Jambore Provinsi': 30
+                };
                 return mapKhusus[val] || 16;
             }
-            return 84; // Default kabupaten juara 1
+
+            const level = document.getElementById('point-level').value;
+            const sifat = document.getElementById('point-sifat').value;
+            const keikutsertaan = document.getElementById('point-keikutsertaan').value;
+            const juara = document.getElementById('point-juara').value;
+
+            const rankMap = { 'Juara 1': 0, 'Juara 2': 1, 'Juara 3': 2, 'Harapan 1': 3, 'Harapan 2': 4, 'Harapan 3': 5 };
+            const rIdx = rankMap[juara] !== undefined ? rankMap[juara] : 0;
+
+            const matrix = {
+                'Nasional': {
+                    'Berjenjang': {
+                        'Perorangan': [360, 344, 328, 312, 296, 280],
+                        'Beregu': [180, 172, 164, 156, 148, 140]
+                    },
+                    'Tidak Berjenjang': {
+                        'Perorangan': [180, 172, 164, 156, 148, 140],
+                        'Beregu': [90, 86, 82, 78, 74, 70]
+                    }
+                },
+                'Provinsi': {
+                    'Berjenjang': {
+                        'Perorangan': [264, 248, 232, 216, 200, 184],
+                        'Beregu': [132, 124, 116, 108, 100, 92]
+                    },
+                    'Tidak Berjenjang': {
+                        'Perorangan': [132, 124, 116, 108, 100, 92],
+                        'Beregu': [66, 62, 58, 54, 50, 46]
+                    }
+                },
+                'Kabupaten': {
+                    'Berjenjang': {
+                        'Perorangan': [168, 152, 136, 120, 104, 88],
+                        'Beregu': [84, 76, 68, 60, 52, 44]
+                    },
+                    'Tidak Berjenjang': {
+                        'Perorangan': [84, 76, 68, 60, 52, 44],
+                        'Beregu': [42, 38, 34, 30, 26, 22]
+                    }
+                },
+                'Kecamatan': {
+                    'Berjenjang': {
+                        'Perorangan': [72, 64, 56, 48, 40, 32],
+                        'Beregu': [36, 32, 28, 24, 20, 16]
+                    },
+                    'Tidak Berjenjang': {
+                        'Perorangan': [72, 64, 56, 48, 40, 32],
+                        'Beregu': [36, 32, 28, 24, 20, 16]
+                    }
+                },
+                'Sekolah': {
+                    'Berjenjang': {
+                        'Perorangan': [24, 16, 8, 4, 2, 1],
+                        'Beregu': [14.4, 9.6, 4.8, 2.4, 1.2, 0.6]
+                    },
+                    'Tidak Berjenjang': {
+                        'Perorangan': [24, 16, 8, 4, 2, 1],
+                        'Beregu': [14.4, 9.6, 4.8, 2.4, 1.2, 0.6]
+                    }
+                },
+                'Kelas': {
+                    'Berjenjang': {
+                        'Perorangan': [4, 2, 1, 0.5, 0.25, 0.1],
+                        'Beregu': [3, 1.5, 0.75, 0.35, 0.15, 0.05]
+                    },
+                    'Tidak Berjenjang': {
+                        'Perorangan': [4, 2, 1, 0.5, 0.25, 0.1],
+                        'Beregu': [3, 1.5, 0.75, 0.35, 0.15, 0.05]
+                    }
+                }
+            };
+
+            try {
+                const arr = matrix[level][sifat][keikutsertaan];
+                return arr[rIdx] !== undefined ? arr[rIdx] : 10;
+            } catch(e) {
+                return 10;
+            }
         }
 
         function updatePointPreview() {
@@ -780,28 +1286,216 @@
         function submitPointForm(e) {
             e.preventDefault();
             const studentId = parseInt(document.getElementById('point-student-id').value);
+            const catType = document.getElementById('point-category-type').value;
             const desc = document.getElementById('point-desc').value.trim();
             const pointsEarned = getCalculatedPoints();
+
             const student = appState.students.find(s => s.id === studentId);
             if(student) {
                 student.points += pointsEarned;
                 appState.studentPointsLog.unshift({
                     id: Date.now(),
                     studentName: `${student.name} (${student.class})`,
-                    category: 'Prestasi',
+                    category: catType === 'lomba' ? 'Prestasi Lomba' : 'Jabatan/Khusus',
                     desc: desc,
                     points: pointsEarned,
                     date: 'Hari ini',
                     recorder: appState.currentUser.name
                 });
+                appState.auditLogs.unshift({ text: `${appState.currentUser.name} menambahkan ${pointsEarned} poin prestasi untuk ${student.name}`, time: 'Baru saja' });
                 showToast(`Berhasil menambahkan ${pointsEarned} poin untuk ${student.name}!`, 'success');
                 switchTab('poin');
             }
         }
 
+        function addLeaveTaskRow() {
+            const container = document.getElementById('task-rows-container');
+            const div = document.createElement('div');
+            div.className = 'grid grid-cols-1 sm:grid-cols-5 gap-2 items-center bg-slate-900/60 p-3 rounded-xl border border-slate-700 task-row';
+            div.innerHTML = `
+                <input type="text" placeholder="Jam Ke (cth: 4-5)" class="sub-jam p-2.5 bg-slate-950 border border-slate-700 rounded-xl text-xs text-white" required>
+                <input type="text" placeholder="Kelas (cth: 8B)" class="sub-kelas p-2.5 bg-slate-950 border border-slate-700 rounded-xl text-xs text-white" required>
+                <input type="text" placeholder="Mata Pelajaran" class="sub-mapel p-2.5 bg-slate-950 border border-slate-700 rounded-xl text-xs text-white" required>
+                <select class="sub-guru p-2.5 bg-slate-950 border border-slate-700 rounded-xl text-xs text-white">
+                    <option>Dra. Hj. Nur Laila</option>
+                    <option>Agus Prasetyo, S.Pd</option>
+                    <option>Dewi Lestari, S.Pd</option>
+                    <option>Budi Santoso, S.Pd</option>
+                </select>
+                <div class="flex gap-2">
+                    <input type="text" placeholder="Rincian Tugas Siswa..." class="sub-tugas p-2.5 bg-slate-950 border border-slate-700 rounded-xl text-xs text-white flex-grow" required>
+                    <button type="button" onclick="removeTaskRow(this)" class="px-2.5 py-2.5 bg-rose-600/20 hover:bg-rose-600 text-rose-300 hover:text-white rounded-xl text-xs" title="Hapus Baris"><i class="fa-solid fa-trash"></i></button>
+                </div>
+            `;
+            container.appendChild(div);
+        }
+
+        function removeTaskRow(btn) {
+            const container = document.getElementById('task-rows-container');
+            if (container.querySelectorAll('.task-row').length > 1) {
+                btn.closest('.task-row').remove();
+            } else {
+                showToast('Minimal harus ada 1 tugas pengganti kelas.', 'error');
+            }
+        }
+
+        function submitLeaveForm(e) {
+            e.preventDefault();
+            const type = document.getElementById('leave-type').value;
+            const startDate = document.getElementById('leave-date-start').value;
+            const endDate = document.getElementById('leave-date-end').value;
+            const reason = document.getElementById('leave-reason').value;
+
+            const taskRows = document.querySelectorAll('.task-row');
+            const substituteList = [];
+            taskRows.forEach(row => {
+                substituteList.push({
+                    jam: row.querySelector('.sub-jam').value || '1-2',
+                    kelas: row.querySelector('.sub-kelas').value || '8A',
+                    mapel: row.querySelector('.sub-mapel').value || 'Mapel',
+                    guru: row.querySelector('.sub-guru').value,
+                    tugas: row.querySelector('.sub-tugas').value || 'Tugas mandiri'
+                });
+            });
+
+            const newLeave = {
+                id: Date.now(),
+                teacherName: appState.currentUser.name,
+                type: type,
+                startDate: startDate || '2026-11-06',
+                endDate: endDate || startDate || '2026-11-06',
+                reason: reason,
+                status: 'Menunggu',
+                note: '-',
+                substituteList: substituteList
+            };
+
+            appState.leaves.push(newLeave);
+            appState.auditLogs.unshift({ text: `${appState.currentUser.name} mengajukan izin ${type} (${startDate} s.d ${endDate})`, time: 'Baru saja' });
+
+            showToast('Pengajuan izin multi-kelas berhasil dikirim!', 'success');
+            switchTab('riwayat');
+        }
+
+        function approveLeave(id, status) {
+            const leave = appState.leaves.find(l => l.id === id);
+            if(leave) {
+                leave.status = status;
+                leave.note = status === 'Disetujui' ? 'Disetujui oleh Kepala Sekolah.' : 'Ditolak untuk peninjauan ulang.';
+                if(status === 'Disetujui') {
+                    leave.substituteList.forEach(sub => {
+                        appState.substituteAssignments.push({
+                            id: Date.now() + Math.random(),
+                            fromTeacher: leave.teacherName,
+                            jam: sub.jam,
+                            kelas: sub.kelas,
+                            mapel: sub.mapel,
+                            tugas: sub.tugas,
+                            status: 'Aktif'
+                        });
+                    });
+                }
+                appState.auditLogs.unshift({ text: `${appState.currentUser.name} mengubah status izin ${leave.teacherName} menjadi ${status}`, time: 'Baru saja' });
+                showToast(`Izin berhasil ${status.toLowerCase()}!`, 'success');
+                switchTab('dashboard');
+            }
+        }
+
+        function renderKasekLeavesTable(targetStatus) {
+            const bodyEl = document.getElementById('content-body');
+            let filtered = appState.leaves.filter(l => l.status === targetStatus);
+            let html = filtered.length === 0 ? '<p class="text-xs text-slate-400 text-center py-6">Tidak ada data.</p>' : filtered.map(l => {
+                let classesTable = l.substituteList.map(s => `<tr><td class="p-2 border-b border-slate-800">Jam Ke-${s.jam}</td><td class="p-2 border-b border-slate-800">Kelas ${s.kelas} (${s.mapel})</td><td class="p-2 border-b border-slate-800">${s.guru}</td><td class="p-2 border-b border-slate-800">${s.tugas}</td></tr>`).join('');
+                return `
+                <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-700 mb-4">
+                    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-3">
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <h5 class="text-sm font-bold text-white">${l.teacherName}</h5>
+                                <span class="px-2 py-0.5 rounded text-[10px] ${l.status === 'Disetujui' ? 'bg-emerald-500/20 text-emerald-300' : 'bg-amber-500/20 text-amber-300'} font-semibold">${l.status}</span>
+                            </div>
+                            <p class="text-xs text-slate-300 mt-1">Jenis: <strong>${l.type}</strong> &bull; Rentang Tanggal: <strong>${l.startDate} s.d ${l.endDate}</strong></p>
+                            <p class="text-xs text-slate-400 mt-0.5">Alasan: ${l.reason}</p>
+                        </div>
+                        ${l.status === 'Menunggu' ? `
+                            <div class="flex gap-2">
+                                <button type="button" onclick="approveLeave(${l.id}, 'Disetujui')" class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-semibold">Setujui</button>
+                                <button type="button" onclick="approveLeave(${l.id}, 'Ditolak')" class="px-3 py-1.5 bg-rose-600/20 hover:bg-rose-600 text-rose-300 rounded-xl text-xs font-semibold">Tolak</button>
+                            </div>
+                        ` : `<span class="text-xs text-emerald-400 font-semibold"><i class="fa-solid fa-check-circle"></i> Selesai Diproses</span>`}
+                    </div>
+                    <div class="mt-2 pt-2 border-t border-slate-800">
+                        <p class="text-[11px] font-semibold text-slate-400 mb-1 uppercase">Daftar Kelas & Tugas Pengganti yang Ditinggalkan:</p>
+                        <table class="w-full text-left text-xs text-slate-300">
+                            <thead class="bg-slate-950 text-slate-400">
+                                <tr><th class="p-2">Waktu</th><th class="p-2">Kelas & Mapel</th><th class="p-2">Guru Pengganti</th><th class="p-2">Rincian Tugas</th></tr>
+                            </thead>
+                            <tbody>${classesTable}</tbody>
+                        </table>
+                    </div>
+                </div>
+            `;}).join('');
+            bodyEl.innerHTML = `<div class="space-y-3">${html}</div>`;
+        }
+
+        function showLeaveDetailModal(id) {
+            const l = appState.leaves.find(item => item.id === id);
+            if (!l) return;
+            let classesTable = l.substituteList.map(s => `<tr><td class="p-2 border-b border-slate-800">Jam Ke-${s.jam}</td><td class="p-2 border-b border-slate-800">Kelas ${s.kelas} (${s.mapel})</td><td class="p-2 border-b border-slate-800">${s.guru}</td><td class="p-2 border-b border-slate-800">${s.tugas}</td></tr>`).join('');
+            
+            let bodyHtml = `
+                <div class="space-y-3 text-xs">
+                    <p><strong>Nama Guru:</strong> ${l.teacherName}</p>
+                    <p><strong>Jenis Izin:</strong> ${l.type}</p>
+                    <p><strong>Rentang Tanggal:</strong> ${l.startDate} s.d ${l.endDate}</p>
+                    <p><strong>Alasan:</strong> ${l.reason}</p>
+                    <p><strong>Status:</strong> <span class="px-2 py-0.5 rounded ${l.status === 'Disetujui' ? 'bg-emerald-500/20 text-emerald-300' : 'bg-amber-500/20 text-amber-300'}">${l.status}</span></p>
+                    <p><strong>Catatan Kepsek:</strong> ${l.note}</p>
+                    <div class="pt-2">
+                        <p class="font-bold text-slate-200 mb-1">Rincian Tugas Kelas yang Ditinggalkan:</p>
+                        <table class="w-full text-left text-xs text-slate-300 bg-slate-950 rounded-lg overflow-hidden">
+                            <thead class="bg-slate-900 text-slate-400">
+                                <tr><th class="p-2">Jam</th><th class="p-2">Kelas</th><th class="p-2">Pengganti</th><th class="p-2">Tugas</th></tr>
+                            </thead>
+                            <tbody>${classesTable}</tbody>
+                        </table>
+                    </div>
+                </div>
+            `;
+            showInfoModal('Rincian Lengkap Pengajuan Izin', bodyHtml);
+        }
+
+        function postAnnouncement() {
+            const text = document.getElementById('announcement-input').value.trim();
+            if(!text) return;
+            appState.announcements.unshift({
+                id: Date.now(),
+                text: text,
+                author: appState.currentUser.name,
+                date: 'Hari ini'
+            });
+            appState.auditLogs.unshift({ text: `${appState.currentUser.name} mempublikasikan pengumuman baru`, time: 'Baru saja' });
+            document.getElementById('announcement-input').value = '';
+            showToast('Pengumuman berhasil disiarkan ke seluruh guru!', 'success');
+            switchTab('dashboard');
+        }
+
+        function deleteAnnouncement(id) {
+            appState.announcements = appState.announcements.filter(a => a.id !== id);
+            appState.auditLogs.unshift({ text: `${appState.currentUser.name} menghapus sebuah pengumuman`, time: 'Baru saja' });
+            showToast('Pengumuman berhasil dihapus!', 'success');
+            switchTab('dashboard');
+        }
+
         function toggleRole(idx, roleKey) {
             appState.teachersMatrix[idx][roleKey] = !appState.teachersMatrix[idx][roleKey];
+            appState.auditLogs.unshift({ text: `Admin memperbarui peran ${appState.teachersMatrix[idx].name}`, time: 'Baru saja' });
             showToast('Matriks peran dinamis berhasil diperbarui!', 'success');
+        }
+
+        function simulateExcelImport() {
+            appState.auditLogs.unshift({ text: 'Admin mengimpor data user massal via berkas Excel', time: 'Baru saja' });
+            showToast('Berhasil mengimpor 48 akun pengguna baru dari Excel (Termasuk Wali Murid WM-[NIS])!', 'success');
         }
 
         function showInfoModal(title, bodyHtml) {
