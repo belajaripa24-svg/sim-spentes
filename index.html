@@ -164,28 +164,29 @@
         <!-- DASHBOARD VIEW -->
         <div id="dashboard-view" class="hidden w-full max-w-7xl mx-auto flex flex-col z-10 py-6">
             <!-- App Navigation Bar -->
-            <header class="bg-slate-800 border border-slate-700 px-6 py-4 rounded-2xl mb-6 flex items-center justify-between shadow-xl">
+            <header class="bg-slate-800 border border-slate-700 px-4 sm:px-6 py-4 rounded-2xl mb-6 flex items-center justify-between shadow-xl">
                 <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center text-white font-bold">
+                    <div class="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center text-white font-bold shrink-0">
                         <i class="fa-solid fa-graduation-cap"></i>
                     </div>
                     <div>
                         <div class="flex items-center gap-2">
-                            <h2 class="font-bold text-white text-lg">SIM Spentes</h2>
-                            <span id="role-badge" class="px-2 py-0.5 text-xs font-semibold rounded bg-indigo-500/20 text-indigo-300 border border-indigo-500/30"></span>
+                            <h2 class="font-bold text-white text-base sm:text-lg">SIM Spentes</h2>
+                            <span id="role-badge" class="px-2 py-0.5 text-[10px] sm:text-xs font-semibold rounded bg-indigo-500/20 text-indigo-300 border border-indigo-500/30"></span>
                         </div>
-                        <p class="text-xs text-slate-400">UPT SMP Negeri 1 Wates, Kab. Blitar</p>
+                        <p class="text-[11px] sm:text-xs text-slate-400">UPT SMP Negeri 1 Wates, Kab. Blitar</p>
+                        <div class="mt-1 pt-1 border-t border-slate-700/60 flex flex-wrap items-center gap-1.5 text-xs">
+                            <span id="user-display-name" class="font-semibold text-indigo-200"></span>
+                            <span class="text-slate-500 hidden sm:inline">&bull;</span>
+                            <span id="user-role-desc" class="text-slate-400 text-[11px] sm:text-xs"></span>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="flex items-center gap-4">
-                    <div class="text-right hidden sm:block">
-                        <p id="user-display-name" class="text-sm font-semibold text-white"></p>
-                        <p id="user-role-desc" class="text-xs text-slate-400"></p>
-                    </div>
-                    <button type="button" onclick="logout()" class="px-4 py-2 bg-rose-600/20 hover:bg-rose-600 text-rose-400 hover:text-white rounded-xl text-xs font-semibold border border-rose-500/30 transition-all flex items-center gap-2">
+                <div class="flex items-center gap-2 shrink-0">
+                    <button type="button" onclick="logout()" class="px-3 sm:px-4 py-2 bg-rose-600/20 hover:bg-rose-600 text-rose-400 hover:text-white rounded-xl text-xs font-semibold border border-rose-500/30 transition-all flex items-center gap-1.5 sm:gap-2">
                         <i class="fa-solid fa-right-from-bracket"></i>
-                        <span>Keluar</span>
+                        <span class="hidden xs:inline">Keluar</span>
                     </button>
                 </div>
             </header>
@@ -198,15 +199,7 @@
                         <!-- Populated dynamically based on role -->
                     </div>
 
-                    <div class="mt-6 pt-4 border-t border-slate-700/60">
-                        <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-700/50 text-xs">
-                            <div class="flex items-center gap-2 text-emerald-400 font-semibold mb-1">
-                                <i class="fa-solid fa-circle text-[8px]"></i>
-                                <span id="db-status-text">Cloud Sync Active</span>
-                            </div>
-                            <p class="text-slate-400 text-[11px]">API-First PWA running smoothly.</p>
-                        </div>
-                    </div>
+
                 </div>
 
                 <!-- Content Area with overflow-y-auto -->
@@ -252,43 +245,9 @@
         // Complete SIM Spentes State & Official Point Matrix
         let appState = {
             currentUser: null,
-            announcements: [
-                { id: 1, text: "Diharapkan seluruh Guru Mapel untuk mengumpulkan rekap nilai semester ganjil paling lambat hari Jumat. Serta tingkatkan kedisiplinan pengisian jurnal kelas PWA SIM Spentes.", author: "Dr. Hj. Siti Aminah, S.Pd, M.Si", date: "6 November 2026" }
-            ],
-            leaves: [
-                { 
-                    id: 1, 
-                    teacherName: "Dra. Hj. Nur Laila", 
-                    type: "Dinas Luar", 
-                    startDate: "2026-11-06", 
-                    endDate: "2026-11-07", 
-                    reason: "Undangan Workshop Kurikulum di Blitar", 
-                    status: "Disetujui", 
-                    note: "Silakan laksanakan tugas dengan baik.", 
-                    substituteList: [
-                        { jam: "2-3", kelas: "8A", mapel: "Matematika", guru: "Drs. H. Slamet Riyadi, M.Pd", tugas: "Kerjakan LKS halaman 45" },
-                        { jam: "4-5", kelas: "8B", mapel: "Matematika", guru: "Budi Santoso, S.Pd", tugas: "Latihan soal bab aljabar" }
-                    ] 
-                },
-                { 
-                    id: 2, 
-                    teacherName: "Eko Prasetyo, S.Pd", 
-                    type: "Sakit", 
-                    startDate: "2026-11-06", 
-                    endDate: "2026-11-06", 
-                    reason: "Demam dan beristirahat di rumah", 
-                    status: "Menunggu", 
-                    note: "-", 
-                    substituteList: [
-                        { jam: "3-4", kelas: "8B", mapel: "IPA", guru: "Budi Santoso, S.Pd", tugas: "Membaca bab sistem pencernaan" }
-                    ] 
-                }
-            ],
-            substituteAssignments: [
-                { id: 1, fromTeacher: "Dra. Hj. Nur Laila", jam: "2-3", kelas: "8A", mapel: "Matematika", tugas: "Kerjakan LKS halaman 45", status: "Aktif" },
-                { id: 2, fromTeacher: "Dra. Hj. Nur Laila", jam: "4-5", kelas: "8B", mapel: "Matematika", tugas: "Latihan soal bab aljabar", status: "Aktif" },
-                { id: 3, fromTeacher: "Eko Prasetyo, S.Pd", jam: "3-4", kelas: "8B", mapel: "IPA", tugas: "Membaca bab sistem pencernaan", status: "Aktif" }
-            ],
+            announcements: [],
+            leaves: [],
+            substituteAssignments: [],
             ekstrakurikuler: [
                 { id: 1, nama: "Pramuka (Wajib)", jadwal: "Jumat, 13.30 - 15.00 WIB", pembina: "Drs. H. Slamet Riyadi, M.Pd" },
                 { id: 2, nama: "Bola Voli", jadwal: "Rabu, 15.15 - 17.00 WIB", pembina: "Agus Prasetyo, S.Pd" },
@@ -313,6 +272,14 @@
                 { id: 1, studentName: "Aditya Pratama (8A)", category: "Prestasi", desc: "Juara 1 Lomba Akademik Tingkat Kabupaten", points: 30, date: "2026-11-04", recorder: "Ahmad Fauzi, S.Kom" }
             ]
         };
+
+        
+        function getTeacherOptionsHTML() {
+            if (!appState.teachersMatrix || appState.teachersMatrix.length === 0) {
+                return '<option value="">Memuat data guru...</option>';
+            }
+            return appState.teachersMatrix.map(t => `<option value="${t.name}">${t.name} (${t.mapel || 'Guru'})</option>`).join('');
+        }
 
         function togglePassword() {
             const pwdInput = document.getElementById('password');
@@ -370,6 +337,44 @@
                 const { data: students, error: sErr } = await _supabase.from('students').select('*');
                 if (!sErr && students && students.length > 0) {
                     appState.students = students;
+                }
+
+                const { data: annData, error: annErr } = await _supabase.from('pengumuman').select('*').order('created_at', { ascending: false });
+                if (!annErr && annData) {
+                    appState.announcements = annData.map(a => ({
+                        id: a.id,
+                        text: a.isi || a.judul,
+                        author: a.pembuat || 'Kepala Sekolah',
+                        date: new Date(a.created_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })
+                    }));
+                }
+
+                const { data: leaveData, error: leaveErr } = await _supabase.from('izin_guru').select('*').order('created_at', { ascending: false });
+                if (!leaveErr && leaveData) {
+                    appState.leaves = leaveData.map(l => ({
+                        id: l.id,
+                        teacherName: l.nama_guru,
+                        type: l.jenis_izin,
+                        startDate: l.tanggal_mulai,
+                        endDate: l.tanggal_selesai,
+                        reason: l.alasan,
+                        status: l.status || 'Menunggu',
+                        note: l.catatan_kepsek || '-',
+                        substituteList: []
+                    }));
+                }
+
+                const { data: subData, error: subErr } = await _supabase.from('tugas_pengganti').select('*');
+                if (!subErr && subData) {
+                    appState.substituteAssignments = subData.map(s => ({
+                        id: s.id,
+                        fromTeacher: s.from_teacher,
+                        jam: s.jam,
+                        kelas: s.kelas,
+                        mapel: s.mapel,
+                        tugas: s.tugas,
+                        status: s.status || 'Aktif'
+                    }));
                 }
             } catch (e) {
                 console.log('Menggunakan data lokal cadangan:', e);
@@ -473,7 +478,7 @@
             document.getElementById('user-role-desc').textContent = appState.currentUser.title;
 
             const badge = document.getElementById('role-badge');
-            if(appState.currentUser.role === 'guru') badge.textContent = 'Akun Guru Mapel & Wali Kelas';
+            if(appState.currentUser.role === 'guru') badge.textContent = 'Akun Guru';
             else if(appState.currentUser.role === 'kasek') badge.textContent = 'Akun Kepala Sekolah';
             else if(appState.currentUser.role === 'murid') badge.textContent = 'Akun Siswa';
             else badge.textContent = 'Akun Admin SIM Spentes';
@@ -831,7 +836,7 @@
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                             <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-700">
                                 <p class="text-xs text-slate-400">Pengajuan Izin Aktif</p>
-                                <p class="text-2xl font-bold text-white mt-1">${appState.leaves.filter(l => l.teacherName.includes('Slamet')).length}</p>
+                                <p class="text-2xl font-bold text-white mt-1">${(appState.leaves || []).filter(l => l.status === 'Disetujui' || l.status === 'Menunggu').length}</p>
                                 <span class="text-[11px] text-emerald-400 mt-2 inline-block"><i class="fa-solid fa-check"></i> Jadwal terpantau sistem</span>
                             </div>
                             <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-700">
@@ -915,10 +920,7 @@
                                         <input type="text" placeholder="Kelas (cth: 8A)" class="sub-kelas p-2.5 bg-slate-950 border border-slate-700 rounded-xl text-xs text-white" required>
                                         <input type="text" placeholder="Mata Pelajaran" class="sub-mapel p-2.5 bg-slate-950 border border-slate-700 rounded-xl text-xs text-white" required>
                                         <select class="sub-guru p-2.5 bg-slate-950 border border-slate-700 rounded-xl text-xs text-white">
-                                            <option>Dra. Hj. Nur Laila</option>
-                                            <option>Agus Prasetyo, S.Pd</option>
-                                            <option>Dewi Lestari, S.Pd</option>
-                                            <option>Budi Santoso, S.Pd</option>
+                                            ${getTeacherOptionsHTML()}
                                         </select>
                                         <div class="flex gap-2">
                                             <input type="text" placeholder="Rincian Tugas Siswa..." class="sub-tugas p-2.5 bg-slate-950 border border-slate-700 rounded-xl text-xs text-white flex-grow" required>
@@ -1317,10 +1319,7 @@
                 <input type="text" placeholder="Kelas (cth: 8B)" class="sub-kelas p-2.5 bg-slate-950 border border-slate-700 rounded-xl text-xs text-white" required>
                 <input type="text" placeholder="Mata Pelajaran" class="sub-mapel p-2.5 bg-slate-950 border border-slate-700 rounded-xl text-xs text-white" required>
                 <select class="sub-guru p-2.5 bg-slate-950 border border-slate-700 rounded-xl text-xs text-white">
-                    <option>Dra. Hj. Nur Laila</option>
-                    <option>Agus Prasetyo, S.Pd</option>
-                    <option>Dewi Lestari, S.Pd</option>
-                    <option>Budi Santoso, S.Pd</option>
+                    ${getTeacherOptionsHTML()}
                 </select>
                 <div class="flex gap-2">
                     <input type="text" placeholder="Rincian Tugas Siswa..." class="sub-tugas p-2.5 bg-slate-950 border border-slate-700 rounded-xl text-xs text-white flex-grow" required>
@@ -1465,9 +1464,20 @@
             showInfoModal('Rincian Lengkap Pengajuan Izin', bodyHtml);
         }
 
-        function postAnnouncement() {
+                async function postAnnouncement() {
             const text = document.getElementById('announcement-input').value.trim();
             if(!text) return;
+            try {
+                const { error } = await _supabase.from('pengumuman').insert([{
+                    judul: 'Pengumuman Kepala Sekolah',
+                    isi: text,
+                    pembuat: appState.currentUser.name
+                }]);
+                if (error) throw error;
+            } catch (e) {
+                console.log('Gagal menyimpan ke Supabase, disimpan secara lokal:', e);
+            }
+
             appState.announcements.unshift({
                 id: Date.now(),
                 text: text,
@@ -1480,10 +1490,19 @@
             switchTab('dashboard');
         }
 
-        function deleteAnnouncement(id) {
+        async function deleteAnnouncement(id) {
+            try {
+                const { error } = await _supabase.from('pengumuman').delete().eq('id', id);
+                if (error) {
+                    console.error('Supabase delete error:', error);
+                }
+            } catch (e) {
+                console.log('Gagal menghapus dari Supabase, dihapus dari lokal:', e);
+            }
+
             appState.announcements = appState.announcements.filter(a => a.id !== id);
             appState.auditLogs.unshift({ text: `${appState.currentUser.name} menghapus sebuah pengumuman`, time: 'Baru saja' });
-            showToast('Pengumuman berhasil dihapus!', 'success');
+            showToast('Pengumuman berhasil dihapus dari cloud!', 'success');
             switchTab('dashboard');
         }
 
